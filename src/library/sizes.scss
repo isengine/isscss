@@ -51,13 +51,19 @@
 .w {
 	@include is-sizes-set(width);
 }
+.w-min {
+	@include is-sizes-set(min-width);
+}
+.w-max {
+	@include is-sizes-set(max-width);
+}
 .width {
 	@include is-percent-set(width);
 }
-.min-width {
+.width-min {
 	@include is-percent-set(min-width);
 }
-.max-width {
+.width-max {
 	@include is-percent-set(max-width);
 }
 
@@ -66,12 +72,18 @@
 .h {
 	@include is-sizes-set(height);
 }
+.h-min {
+	@include is-sizes-set(min-height);
+}
+.h-max {
+	@include is-sizes-set(max-height);
+}
 .height {
 	@include is-percent-set(height);
 }
-.min-height {
+.height-min {
 	@include is-percent-set(min-height);
 }
-.max-height {
+.height-max {
 	@include is-percent-set(max-height);
 }
