@@ -54,6 +54,12 @@
 .width {
 	@include is-percent-set(width);
 }
+.min-width {
+	@include is-percent-set(min-width);
+}
+.max-width {
+	@include is-percent-set(max-width);
+}
 
 // height
 
@@ -62,4 +68,10 @@
 }
 .height {
 	@include is-percent-set(height);
+}
+.min-height {
+	@include is-percent-set(min-height);
+}
+.max-height {
+	@include is-percent-set(max-height);
 }
