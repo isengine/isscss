@@ -1,0 +1,30 @@
+/*
+*  Get all colors classes from color map
+*  
+*  Получение всех классов цветов из карты цветов
+*  
+*  ==
+*  .color-white
+*  .color-bg-white
+*  .color-border-white
+*  ==
+*/
+
+@each $type in color, bg, border {
+	@each $key, $value in $is-colors {
+		@if $type == color {
+			.color-#{$key} {
+				@include is-color-set($key);
+			}
+			.color-#{$key}-hover:hover {
+				@include is-color-set($key);
+			}
+		}
+		@else {
+			//.color-#{$type}-#{$key} {
+			.#{$type}-#{$key} {
+				@include is-color-set($key, $type);
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+/*
+*  animation functions
+*  
+*  use:
+*  .is-animation
+*  .is-animation(...)
+*  
+*  first value - set property:
+*  '' - create default property 'all'
+*  
+*  second value - set duration:
+*  '' - create default duration '0.25s'
+*  
+*  third value - set type:
+*  '' - create default type 'ease'
+*  
+*/
+
+@mixin is-animation ($property: all, $duration: 0.25s, $type: ease) {
+	transition: #{$property} #{$duration} #{$type};
+}

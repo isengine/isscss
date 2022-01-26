@@ -1,0 +1,21 @@
+$is-font: (
+	
+	theme: (
+		name:   #{"Open Sans", sans-serif},
+		size:   16px,
+		weight: 400
+	),
+	
+	second: (
+		name:   #{"Open Sans Narrow", sans-serif},
+		size:   16px,
+		weight: 400
+	),
+	
+	icon: (
+		name:   FontAwesome,
+		size:   16px,
+		weight: 400
+	)
+	
+);

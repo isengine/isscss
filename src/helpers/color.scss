@@ -1,0 +1,52 @@
+/*
+*  Get color value from color map by name
+*  
+*  Получить значение цвета из карты цветов по имени
+*  
+*  ==
+*  color: is-color(white);
+*  ==
+*/
+
+@function is-color($name) {
+	@return map-get($is-colors, $name);
+}
+
+/*
+*  Set color style from color map by name and type
+*  Types: color (or none by default), bg, border
+*  
+*  Назначить стиль цвета из карты цветов по имени и типу
+*  Допустимые значения: color (или ничего, по-умолчанию), bg, border
+*  
+*  ==
+*  @include is-color-set(white, border);
+*  ==
+*/
+
+@mixin is-color-set($name, $type: none, $function: none, $value: 50) {
+	
+	$color: is-color($name);
+	
+	@if $color != null {
+		
+		@if $function != none {
+			//$value: $value + "%";
+			//$color: $function($col, $val);
+			//$color: call($function, $color, $value);
+			$color: lighten($color, $value);
+		}
+		
+		@if $type == border {
+			border-color: $color;
+		}
+		@else if $type == bg {
+			background-color: $color;
+		}
+		@else {
+			color: $color;
+		}
+		
+	}
+	
+}

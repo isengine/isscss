@@ -1,0 +1,26 @@
+// font variants
+
+.text-normal {
+	font-style: normal;
+	font-variant: normal;
+	text-overflow: unset;
+	word-wrap: normal;
+	text-decoration: none;
+	text-transform: none;
+}
+
+.text-italic { font-style: italic; }
+.text-oblique { font-style: oblique; }
+.text-small-caps { font-variant: small-caps; }
+.text-clip { text-overflow: clip; }
+.text-ellipsis { text-overflow: ellipsis; }
+.text-break-word { word-wrap: break-word; }
+.text-line-through { text-decoration: line-through; }
+.text-overline { text-decoration: overline; }
+.text-underline { text-decoration: underline; }
+.text-capitalize { text-transform: capitalize; }
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+
+// text align
+// in align

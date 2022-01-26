@@ -1,0 +1,43 @@
+$is-containers-name: container;
+
+@each $key, $value in is-layout(breakpoints) {
+	
+	$is-containers-name: $is-containers-name + ", ." + $key + "-container";
+	
+	@media (min-width: $value) {
+		
+		.#{$is-containers-name} {
+			max-width: map-get(is-layout(widths), $key);
+		}
+		
+		.#{$key}- {
+			&col {
+				flex: 1 0 0%;
+				@include is-columns-set(width);
+			}
+			
+			&offset {
+				@include is-columns-set(margin-left);
+			}
+			
+			&order {
+				
+				&-first {
+					order: -1;
+				}
+				
+				&-last {
+					order: 13;
+				}
+				
+				@for $i from 0 through 6 {
+					&-#{$i} {
+						order: $i;
+					}
+				}
+				
+			}
+		}
+		
+	}
+}

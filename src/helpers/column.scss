@@ -1,0 +1,11 @@
+@mixin is-column-set() {
+	
+	@for $i from 1 through 3 {
+		&-#{$i} {
+			column-count: $i;
+			-moz-column-count: $i;
+			-webkit-column-count: $i;
+		}
+	}
+	
+}

@@ -1,0 +1,11 @@
+$is-cursors: pointer, wait, text, progress, none;
+
+@mixin is-cursor-set() {
+	
+	@each $type in $is-cursors {
+		&-#{$type} {
+			cursor: $type;
+		}
+	}
+	
+}

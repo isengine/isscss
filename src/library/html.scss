@@ -1,0 +1,21 @@
+/*
+*  Set html base styles
+*  
+*  Установка базовых значений для элемента html
+*/
+
+html {
+	min-width: is-layout(min-width);
+	@include is-font-set(theme);
+}
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+.outline-0,
+.outline-0:hover {
+	outline: none;
+}

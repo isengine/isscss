@@ -1,0 +1,187 @@
+@mixin is-align-simple() {
+	
+	& {
+		left: 50%;
+		right: auto;
+		top: 50%;
+		bottom: auto;
+		transform: translate(-50%, -50%);
+	}
+	&x {
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+	&y {
+		top: 50%;
+		bottom: auto;
+		transform: translateY(-50%);
+	}
+	
+	&wh {
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+	&w {
+		left: 0;
+		right: 0;
+	}
+	&h {
+		top: 0;
+		bottom: 0;
+	}
+	
+	&t {
+		top: 0;
+		bottom: auto;
+	}
+	&b {
+		top: auto;
+		bottom: 0;
+	}
+	&l {
+		left: 0;
+		right: auto;
+	}
+	&r {
+		left: auto;
+		right: 0;
+	}
+	
+}
+
+@mixin is-align-special() {
+	
+	&-block {
+		& {
+			width: auto;
+			margin-left: auto;
+			margin-right: auto;
+			height: auto;
+			line-height: 100%;
+			vertical-align: middle;
+		}
+		&-x {
+			width: auto;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		&-y {
+			height: auto;
+			line-height: 100%;
+			vertical-align: middle;
+		}
+		&-wh {
+			width: 100%;
+			height: 100%;
+			line-height: 100%;
+			text-align: center;
+			vertical-align: middle;
+		}
+		&-w {
+			width: 100%;
+			text-align: center;
+		}
+		&-h {
+			height: 100%;
+			line-height: 100%;
+			vertical-align: middle;
+		}
+	}
+	
+	// horizontal align
+	
+	&-left     { text-align: left; }
+	&-right    { text-align: right; }
+	&-start    { text-align: start; }
+	&-end      { text-align: end; }
+	&-center   { text-align: center; }
+	&-justify  { text-align: justify; }
+	
+	// vertical align
+	
+	&-top      { vertical-align: top; }
+	&-bottom   { vertical-align: bottom; }
+	&-middle   { vertical-align: middle; }
+	&-baseline { vertical-align: baseline; }
+	
+	// image align
+	
+	&-image {
+		&-cover   {
+			width: 100%;
+			object-fit: cover;
+		}
+		&-contain   {
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+	
+	// background align
+	
+	&-bg {
+		&-cover   {
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+		}
+		&-contain   {
+			background-size: contain;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+		}
+		&-top {
+			background-position-y: 0%;
+		}
+		&-bottom {
+			background-position-y: 100%;
+		}
+		&-left {
+			background-position-x: 0%;
+		}
+		&-right {
+			background-position-x: 100%;
+		}
+	}
+	
+	// background mask align
+	
+	&-mask {
+		&-cover   {
+			mask-size: cover;
+			mask-position: 50% 50%;
+			mask-repeat: no-repeat;
+			-webkit-mask-size: cover;
+			-webkit-mask-position: 50% 50%;
+			-webkit-mask-repeat: no-repeat;
+		}
+		&-contain   {
+			mask-size: contain;
+			mask-position: 50% 50%;
+			mask-repeat: no-repeat;
+			-webkit-mask-size: contain;
+			-webkit-mask-position: 50% 50%;
+			-webkit-mask-repeat: no-repeat;
+		}
+		&-top {
+			mask-position-y: 0%;
+			-webkit-mask-position-y: 0%;
+		}
+		&-bottom {
+			mask-position-y: 100%;
+			-webkit-mask-position-y: 100%;
+		}
+		&-left {
+			mask-position-x: 0%;
+			-webkit-mask-position-x: 0%;
+		}
+		&-right {
+			mask-position-x: 100%;
+			-webkit-mask-position-x: 100%;
+		}
+	}
+	
+}

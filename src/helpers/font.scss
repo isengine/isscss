@@ -1,0 +1,70 @@
+/*
+*  Get value from font map by name and sub
+*  
+*  Получить значение из карты темы по имени и подзаголовку
+*  
+*  ==
+*  font-family: is-font(name, sub);
+*  ==
+*/
+
+@function is-font($name, $sub: name) {
+	
+	$group: map-get($is-font, $name);
+	$value: map-get($group, $sub);
+	
+	@return $value;
+	
+}
+
+@mixin is-font-set($name, $weight: default, $size: default, $height: none) {
+	
+	$group: map-get($is-font, $name);
+	
+	font-family: map-get($group, name);
+	
+	@if $weight != none {
+		@if $weight != default {
+			font-weight: $weight;
+		}
+		@else {
+			font-weight: map-get($group, weight);
+		}
+	}
+	
+	@if $size != none {
+		@if $size != default {
+			font-size: $size;
+		}
+		@else {
+			font-size: map-get($group, size);
+		}
+	}
+	
+	@if $height != none {
+		@if $height != default {
+			line-height: $height;
+		}
+		@else {
+			line-height: map-get($group, height);
+		}
+	}
+	
+}
+
+@mixin is-font-weight-set() {
+	
+	@for $i from 1 through 9 {
+		$i: $i * 100;
+		&-#{$i} {
+			font-weight: $i;
+		}
+	}
+	
+	@each $i in bold, bolder, normal, light, lighter {
+		&-#{$i} {
+			font-weight: $i;
+		}
+	}
+	
+}

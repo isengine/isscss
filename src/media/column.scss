@@ -1,0 +1,9 @@
+@each $key, $value in is-layout(breakpoints) {
+	@media (min-width: $value) {
+		
+		.#{$key}-column {
+			@include is-column-set();
+		}
+		
+	}
+}

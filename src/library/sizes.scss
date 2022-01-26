@@ -1,0 +1,65 @@
+// margin
+
+.m {
+	@include is-sizes-set(margin);
+}
+.mx {
+	@include is-sizes-set(margin-left, margin-right);
+}
+.my {
+	@include is-sizes-set(margin-top, margin-bottom);
+}
+.mt {
+	@include is-sizes-set(margin-top);
+}
+.mb {
+	@include is-sizes-set(margin-bottom);
+}
+.ml {
+	@include is-sizes-set(margin-left);
+}
+.mr {
+	@include is-sizes-set(margin-right);
+}
+
+// padding
+
+.p {
+	@include is-sizes-set(padding);
+}
+.px {
+	@include is-sizes-set(padding-left, padding-right);
+}
+.py {
+	@include is-sizes-set(padding-top, padding-bottom);
+}
+.pt {
+	@include is-sizes-set(padding-top);
+}
+.pb {
+	@include is-sizes-set(padding-bottom);
+}
+.pl {
+	@include is-sizes-set(padding-left);
+}
+.pr {
+	@include is-sizes-set(padding-right);
+}
+
+// width
+
+.w {
+	@include is-sizes-set(width);
+}
+.width {
+	@include is-percent-set(width);
+}
+
+// height
+
+.h {
+	@include is-sizes-set(height);
+}
+.height {
+	@include is-percent-set(height);
+}

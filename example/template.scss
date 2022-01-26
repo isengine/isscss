@@ -1,0 +1,53 @@
+// add scss framework
+@import "theme";
+@import "../../../vendor/isengine/isscss/bootstrap/bootstrap";
+@import "../../../vendor/isengine/isscss/src/is";
+
+.bg-theme {
+	@include is-color-set(white);
+}
+.bg-second {
+	@include is-color-set(white);
+}
+
+a,
+button,
+input {
+	@include is-animation();
+	&.color-none:hover {
+		@include is-color-set(none);
+	}
+	&.color-theme:hover {
+		@include is-color-set(theme, color, lighten, 10);
+	}
+	&.color-second:hover {
+		@include is-color-set(second, color, lighten, 10);
+	}
+	&.color-gray-700.active {
+		@include is-color-set(second);
+	}
+	&.color-white.active {
+		@include is-color-set(white);
+	}
+	&.color-gray-800.active {
+		@include is-color-set(theme);
+	}
+	&.bg-theme:hover {
+		@include is-color-set(white);
+		@include is-color-set(theme, bg, lighten, 10);
+	}
+	&.bg-second:hover {
+		@include is-color-set(white);
+		@include is-color-set(second, bg, lighten, 10);
+	}
+	&.border-theme:hover {
+		@include is-color-set(theme, border, lighten, 10);
+	}
+	&.border-second:hover {
+		@include is-color-set(second, border, lighten, 10);
+	}
+}
+a,
+a:hover {
+	text-decoration: none;
+}

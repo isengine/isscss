@@ -1,0 +1,366 @@
+# Разрешения экранов
+
+## Для смартфонов:
+
+ 480 x 320
+ 640 x 480
+ 800 x 480
+ 960 x 540
+ 960 x 640
+1136 x 640
+
+## Для мониторов:
+
+1024 × 768
+
+## Для hd экранов:
+
+1280 х 800
+1280 x 1200
+1366 x 1200
+1440 x 1400
+1920 x 1080
+1920 x 1200
+2048 x 1400
+2048 × 1536
+2560 x 1400
+4096 x 1400
+
+## Ширина экранов
+
+ 320
+ 480
+ 540
+ 640
+ 768
+ 800
+ 960
+1024
+1080
+1136
+1200
+1280
+1366
+1400
+1440
+1536
+1920
+2048
+2560
+4096
+
+# Сетка
+
+## Стандартная сетка bootstrap
+
+@xs:     0px -  575px   100%
+@sm:   576px -  767px   540px
+@md:   768px -  991px   720px
+@lg:   992px - 1199px   960px
+@xl:  1200px - 1399px  1140px
+@xxl: 1400px -  ...px  1320px
+
+Данная сетка не вполне удовлетворяет текущему техническому положению.
+
+Разрешения в диапазоне 768-1200 избыточны, а 0-768 не достаточны.
+
+## Предлагаемая сетка
+
+@--:    0px -  519px;   100% smartphones
+@xs:  520px -  767px;   100% big and horizontal smartphones
+@sm:  768px -  991px;   720  vertical and small screens
+@md:  992px - 1199px;   960  small screens support
+@lg: 1200px - 1899px;  1140  hd screens
+@xl: 1900px -  ...px;  1600  full hd and above
+
+Предлагаемая нами сетка поддерживает как старые экраны, так и новые, с учетом роста разрешения и обратной интерполяции разрешения в браузерах смартфонов.
+
+## Ширина экранов
+
+--: 320 480
+xs: 540 640
+sm: 768 800 960
+md: 1024 1080 1136
+lg: 1200 1280 1366 1400 1440 1536
+xl: 1920 2048 2560 4096
+
+## Соотношение видимой области
+
+Мы предлагаем также сравнить сетки математически.
+
+Возьмем предельные значения для каждого размера и высчитаем коэффициенты видимой области.
+
+В сетке bootstrap получаются следующие значения:
+
+размер     пределы область  мин макс
+xs        0 -  576       -    -    -
+sm      576 -  768     540 1,07 1,43 
+md      768 -  992     720 1,07 1,38
+lg      992 - 1200     960 1,03 1,25
+xl     1200 - 1400    1140 1,05 1,23
+xxl    1400 - 4096    1320 1,06 3,10
+
+Размер xs не считается, т.к. область не фиксированная, а равна 100%.
+
+В предлагаемой сетке получаются следующие значения:
+
+размер     пределы область  мин макс
+--        0 -  520       -    -    -
+xs      520 -  768       -    -    -
+sm      768 -  992     720 1,07 1,38
+md      992 - 1200     960 1,03 1,25
+lg     1200 - 1900    1140 1,05 1,67
+xl     1900 - 4096    1600 1,18 2,56
+
+Возьмем ширину стандартных full hd, 2k и 4k разрешений и сравним ширину пустых областей по краям.
+
+Для сетки bootstrap они будут:
+
+(1920 - 1320) / 2 = 300
+(2048 - 1320) / 2 = 364
+(4096 - 1320) / 2 = 1388
+
+В предлагаемой нами сетке каждое из них будет:
+
+(1920 - 1600) / 2 = 160
+(2048 - 1600) / 2 = 224
+(4096 - 1600) / 2 = 1248
+
+## Минимальная ширина
+
+Также мы предлагаем установить минимальную ширину экрана
+
+320px
+
+# Совместимость с bootstrap
+
+## Отличия от bootstrap
+
+Главное отличие - это несовпадение названий размерного ряда.
+
+Из-за этого не получится совместимость между этими библиотеками.
+
+Хотя bootstrap выгодно использовать из-за большого количества отформатированных элементов и встроенных js плагинов.
+
+Пока библиотека находится в разработке, рекомендуем использовать ее как надстройку над bootstrap.
+
+Для этого, используйте включение специально подготовленной версии bootstrap из комплекта, в которой вырезаны лишние !important;
+
+@import "is/bootstrap/bootstrap";
+
+## Сетка
+
+-xs-  -
+-sm-  -xs-
+-md-  -sm-
+-lg-  -md-
+-xl-  -lg-
+-xxl- -xl-
+
+'-xs '  ' '
+'-sm '  '-xs '
+'-md '  '-sm '
+'-lg '  '-md '
+'-xl '  '-lg '
+'-xxl ' '-xl '
+
+-xs"  "
+-sm"  -xs"
+-md"  -sm"
+-lg"  -md"
+-xl"  -lg"
+-xxl" -xl"
+
+Новая сетка требует указывать метки брекпоинта до основного класса.
+
+Например:
+
+bootstrap
+
+container-lg
+col-12 col-md-6
+m-sm-2
+
+наша сетка
+
+lg-container
+col-12 md-col-6
+sm-m-2
+
+## Размеры шрифтов
+
+1 2.5  25
+2 2    2
+3 1.75 175
+4 1.5  15
+5 1.25 125
+6 1    1
+
+Все доступные размеры
+
+025  0.25 rem   4 px
+05   0.5  rem   8 px
+075  0.75 rem  12 px
+08   0.8  rem  13 px (12.8 px)
+09   0.9  rem  14 px (14.4 px)
+1    1    rem  16 px
+11   1.1  rem  18 px (17.6 px)
+12   1.2  rem  19 px (19.2 px)
+125  1.25 rem  20 px
+15   1.5  rem  24 px
+175  1.75 rem  28 px
+2    2    rem  32 px
+225  2.25 rem  36 px
+25   2.5  rem  40 px
+275  2.75 rem  44 px
+3    3    rem  48 px
+35   3.5  rem  56 px
+4    4    rem  64 px
+45   4.5  rem  72 px
+5    5    rem  80 px
+55   5.5  rem  88 px
+6    6    rem  96 px
+
+## Отступы
+
+0 0    0
+1 0.25 025
+2 0.5  05
+3 1    1
+4 1.5  15
+5 3    3
+
+[m|p][x|y|t|b|s|e]-[xs...xxl-][0...5]
+
+m-
+mx-
+my-
+mt-
+mb-
+ms-
+me-
+
+(m|p)[xytbse]{0,1}(-xs|-sm|-md|-lg|-xl|-xxl)?-\d{1}
+
+## Позиционирование и отображение
+
+d-block        block
+d-inline       inline
+d-inline-block inline-block
+d-flex         flex
+d-none         none
+
+position-fixed    fixed
+position-absolute absolute
+position-relative relative
+
+(top|bottom|start|end)-(0|50|100)
+translate-middle(-x|-y)
+
+at	t0 ba
+ab	b0 ta
+al	l0 ra
+ar	r0 la
+
+aw	w 0 to 0
+ah	h 0 to 0
+
+ax	x center
+ay	y center
+awh	0 to 0
+
+fixed-top	 fixed at aw
+fixed-bottom fixed ab aw
+
+## Flex
+
+align-items-end
+align-content-end
+justify-content-between
+
+## Цвета
+
+0            0 00 #000000
+1  +23  23  22 16 #161616
+2  +24  47  46 2e #2e2e2e
+3  +23  70  69 45 #454545
+4  +23  93  92 5c #5c5c5c
+5  +23 116 115 73 #737373
+6  +24 140 139 8b #8b8b8b
+7  +23 163 162 a2 #a2a2a2
+8  +23 186 185 b9 #b9b9b9
+9  +23 209 208 d0 #d0d0d0
+10 +24 233 232 e8 #e8e8e8
+11 +23 256 255 ff #ffffff
+
+# Что добавить
+
+float
+opacity
+overflow
+visible
+
+grid
+gap for flex
+
+styles for
+table
+form
+input
+button
+nav
+
+7149
+
+<span class="border"></span>
+<span class="border-top"></span>
+<span class="border-end"></span>
+<span class="border-bottom"></span>
+<span class="border-start"></span>
+
+<span class="border-0"></span>
+<span class="border-top-0"></span>
+<span class="border-end-0"></span>
+<span class="border-bottom-0"></span>
+<span class="border-start-0"></span>
+
+<span class="border border-1"></span>
+<span class="border border-2"></span>
+<span class="border border-3"></span>
+<span class="border border-4"></span>
+<span class="border border-5"></span>
+
+Border-radius
+
+<img src="..." class="rounded" alt="...">
+<img src="..." class="rounded-top" alt="...">
+<img src="..." class="rounded-end" alt="...">
+<img src="..." class="rounded-bottom" alt="...">
+<img src="..." class="rounded-start" alt="...">
+<img src="..." class="rounded-circle" alt="...">
+<img src="..." class="rounded-pill" alt="...">
+
+<img src="..." class="rounded-0" alt="...">
+<img src="..." class="rounded-1" alt="...">
+<img src="..." class="rounded-2" alt="...">
+<img src="..." class="rounded-3" alt="...">
+
+$border-width:                1px;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+);
+
+$border-color:                $gray-300;
+
+$border-radius:               .25rem;
+$border-radius-sm:            .2rem;
+$border-radius-lg:            .3rem;
+$border-radius-pill:          50rem;
+
+text-start  -> align-left
+text-end    -> align-right
+text-center -> align-center

@@ -1,0 +1,6 @@
+.a {
+	@include is-align-simple();
+}
+.align {
+	@include is-align-special();
+}

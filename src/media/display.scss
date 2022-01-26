@@ -1,0 +1,7 @@
+@each $key, $value in is-layout(breakpoints) {
+	@media (min-width: $value) {
+		.#{$key}- {
+			@include is-display-position-set();
+		}
+	}
+}

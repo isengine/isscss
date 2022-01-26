@@ -1,0 +1,14 @@
+$is-display-position: (
+	
+	block:        display,
+	inline:       display,
+	inline-block: display,
+	flex:         display,
+	none:         display,
+	
+	relative:     position,
+	absolute:     position,
+	fixed:        position,
+	stick:        position
+	
+);
