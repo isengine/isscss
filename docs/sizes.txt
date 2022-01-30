@@ -51,4 +51,19 @@ mb-
 ms-
 me-
 
+-0
+-auto
+-last
+-first
+
 (m|p)[xytbse]{0,1}(-xs|-sm|-md|-lg|-xl|-xxl)?-\d{1}
+
+m
+p
+
+w
+h
+width
+height
+	-min
+	-max

@@ -20,6 +20,18 @@
 			}
 		}
 	}
+	&-last:last-child {
+		#{$style}: 0;
+		@if $second != none {
+			#{$second}: 0;
+		}
+	}
+	&-first:first-child {
+		#{$style}: 0;
+		@if $second != none {
+			#{$second}: 0;
+		}
+	}
 }
 
 @mixin is-percent-set($style) {

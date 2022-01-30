@@ -1,0 +1,11 @@
+@mixin is-outline-set($color) {
+	&,
+	&:hover,
+	&:focus {
+		outline: none;
+	}
+	&:focus {
+		$color: fade-out(is-color($color), 0.75);
+		box-shadow: 0 0 0 0.25rem $color;
+	}
+}
