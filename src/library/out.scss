@@ -1,0 +1,88 @@
+.out {
+	
+	&-top {
+		top: 0;
+		bottom: auto;
+		transform: translateY(-100%);
+		@include is-out-set (top);
+	}
+	&-bottom {
+		top: auto;
+		bottom: 0;
+		transform: translateY(100%);
+		@include is-out-set (bottom);
+	}
+	
+	&-left {
+		left: 0;
+		right: auto;
+		transform: translateX(-100%);
+		@include is-out-set (left);
+	}
+	&-right {
+		left: auto;
+		right: 0;
+		transform: translateX(100%);
+		@include is-out-set (right);
+	}
+	
+	&-top-left {
+		top: 0;
+		bottom: auto;
+		left: 0;
+		right: auto;
+		transform: translate(-100%, -100%);
+	}
+	&-top-center {
+		top: 0;
+		bottom: auto;
+		left: 50%;
+		right: auto;
+		transform: translate(-50%, -100%);
+	}
+	&-top-right {
+		top: 0;
+		bottom: auto;
+		left: auto;
+		right: 0;
+		transform: translate(100%, -100%);
+	}
+	
+	&-bottom-left {
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: auto;
+		transform: translate(-100%, 100%);
+	}
+	&-bottom-center {
+		top: auto;
+		bottom: 0;
+		left: 50%;
+		right: auto;
+		transform: translate(-50%, 100%);
+	}
+	&-bottom-right {
+		top: auto;
+		bottom: 0;
+		left: auto;
+		right: 0;
+		transform: translate(100%, 100%);
+	}
+	
+	&-middle-left {
+		top: 50%;
+		bottom: auto;
+		left: 0;
+		right: auto;
+		transform: translate(-100%, -50%);
+	}
+	&-middle-right {
+		top: 50%;
+		bottom: auto;
+		left: auto;
+		right: 0;
+		transform: translate(100%, -50%);
+	}
+	
+}

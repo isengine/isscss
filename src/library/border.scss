@@ -1,0 +1,12 @@
+.border {
+	@include is-border-set();
+	@include is-border-width-set();
+}
+
+.radius {
+	@include is-border-radius-set();
+}
+
+.corners {
+	@include is-border-corners-set();
+}
