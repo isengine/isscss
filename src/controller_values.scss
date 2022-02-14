@@ -1,0 +1,31 @@
+$is-colors: false !default;
+@if type-of($is-colors) != map {
+	@import "values/colors";
+}
+
+$is-font: false !default;
+@if type-of($is-font) != map {
+	@import "values/font";
+}
+
+$is-layout: false !default;
+@if type-of($is-layout) != map {
+	@import "values/layout";
+}
+
+$is-sizes: false !default;
+@if type-of($is-sizes) != map {
+	@import "values/sizes";
+}
+
+$is-percent: false !default;
+@if type-of($is-percent) != map {
+	@import "values/percent";
+}
+
+@import "values/display";
+
+$is-modules: false !default;
+@if type-of($is-modules) != map {
+	@import "values/modules";
+}
