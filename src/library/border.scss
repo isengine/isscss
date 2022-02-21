@@ -1,5 +1,4 @@
-.border {
-	@include is-border-set();
+.b {
 	@include is-border-width-set();
 }
 

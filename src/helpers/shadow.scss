@@ -1,0 +1,68 @@
+/*
+*  Get shadow group by name
+*  
+*  Получить группу массива теней по имени
+*  
+*  ==
+*  is-shadow(offset);
+*  ==
+*/
+
+@function is-shadow($name) {
+	@return map-get($is-shadow, $name);
+}
+
+/*
+*  Set default shadow styles
+*  
+*  Назначить стили теней по-умолчанию
+*  
+*  ==
+*  @include is-shadow-set();
+*  ==
+*/
+
+@mixin is-shadow-set($style) {
+	
+	@each $key-col, $value-col in is-shadow(colors) {
+	
+		$prefix1: "";
+		@if $key-col != 0 {
+			$prefix1: $prefix1 + "-" + $key-col;
+		}
+		
+		@each $offset in 0, 1 {
+			
+			@each $key-blur, $value-blur in is-shadow(blur) {
+				
+				$prefix2: $prefix1;
+				@if $offset != 0 {
+					$prefix2: $prefix2 + "-o";
+					$offset: map-get(is-shadow(offset), $key-blur);
+				}
+				
+				$prefix3: $prefix2;
+				@if $key-blur != 0 {
+					$prefix3: $prefix3 + "-" + $key-blur;
+				}
+				
+				@each $key-trans, $value-trans in is-shadow(transparency) {
+				
+					$prefix4: $prefix3;
+					@if $key-trans != 0 {
+						$prefix4: $prefix4 + "-" + $key-trans;
+					}
+					
+					&#{$prefix4} {
+						#{$style}: $offset $offset $value-blur rgba($value-col, $value-trans);
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

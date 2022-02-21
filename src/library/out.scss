@@ -1,29 +1,43 @@
+.o {
+	&t {
+		margin-top: -1px;
+		@include is-out-set (margin-top);
+	}
+	&b {
+		margin-bottom: -1px;
+		@include is-out-set (margin-bottom);
+	}
+	&l {
+		margin-left: -1px;
+		@include is-out-set (margin-left);
+	}
+	&r {
+		margin-right: -1px;
+		@include is-out-set (margin-right);
+	}
+}
+
 .out {
 	
 	&-top {
 		top: 0;
 		bottom: auto;
 		transform: translateY(-100%);
-		@include is-out-set (top);
 	}
 	&-bottom {
 		top: auto;
 		bottom: 0;
 		transform: translateY(100%);
-		@include is-out-set (bottom);
 	}
-	
 	&-left {
 		left: 0;
 		right: auto;
 		transform: translateX(-100%);
-		@include is-out-set (left);
 	}
 	&-right {
 		left: auto;
 		right: 0;
 		transform: translateX(100%);
-		@include is-out-set (right);
 	}
 	
 	&-top-left {
@@ -83,6 +97,19 @@
 		left: auto;
 		right: 0;
 		transform: translate(100%, -50%);
+	}
+	
+	&-top {
+		@include is-out-set (top);
+	}
+	&-bottom {
+		@include is-out-set (bottom);
+	}
+	&-left {
+		@include is-out-set (left);
+	}
+	&-right {
+		@include is-out-set (right);
 	}
 	
 }

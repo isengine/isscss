@@ -1,11 +1,44 @@
-// add scss framework
+// add your theme settings
+// добавим настройки вашей темы
+
 @import "theme";
+
+// add modified bootstrap
+// it haven't important rules
+// добавим модифицированный bootstrap
+// в нем нет правил important
+
 @import "../../../vendor/isengine/isscss/bootstrap/bootstrap";
+
+// add scss framework
+// подключим scss framework в свой проект
+
 @import "../../../vendor/isengine/isscss/src/is";
+
+// example of building your classes based on embedding framework classes
+// пример построения своих классов на основе встраивания классов фреймворка
+
+h1, h2, h3, h4, h5, h6 {
+	@extend .color-black;
+	@extend .block;
+}
+h1, h2, h4, h6 {
+	@extend .fw-bold;
+}
+h1 { @extend .fs-25; }
+h2 { @extend .fs-2; }
+h3 { @extend .fs-2; }
+h4 { @extend .fs-15; }
+h5 { @extend .fs-15; }
+h6 { @extend .fs-1; }
+
+// example of use framework functions
+// пример использования функций фреймворка
 
 .bg-theme {
 	@include is-color-set(white);
 }
+
 .bg-second {
 	@include is-color-set(white);
 }
