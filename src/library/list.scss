@@ -8,3 +8,12 @@ ul {
     //margin-inline-end: 0;
     //padding-inline-start: 0;
 }
+
+ol {
+   list-style: none;
+   counter-reset: li;
+}
+ol > li:before {
+   counter-increment: li;
+   content: counters(li, ".") ". ";
+}
