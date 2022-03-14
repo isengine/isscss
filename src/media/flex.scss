@@ -20,6 +20,10 @@
 					@include is-columns-set(flex-basis, width);
 				}
 				
+				&-gap {
+					@include is-sizes-short-set(gap);
+				}
+				
 			}
 			
 			@include is-flex-align();

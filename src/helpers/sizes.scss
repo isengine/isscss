@@ -34,6 +34,21 @@
 	}
 }
 
+@mixin is-sizes-short-set($style) {
+	&-auto {
+		#{$style}: auto;
+	}
+	&-0 {
+		#{$style}: 0;
+	}
+	@each $value in $is-sizes-short {
+		$name: unquote(str-slice("" + $value, 1, 1) + str-slice("" + $value, 3));
+		&-#{$name} {
+			#{$style}: $value + "rem";
+		}
+	}
+}
+
 @mixin is-percent-set($style) {
 	@each $value in $is-percent {
 		&-#{$value} {

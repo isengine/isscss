@@ -10,7 +10,7 @@
 *  ==
 */
 
-@each $type in color, bg, border {
+@each $type in bg, color, border {
 	@each $key, $value in $is-colors {
 		@if $type == color {
 			.color-#{$key} {

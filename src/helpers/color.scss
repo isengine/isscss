@@ -12,6 +12,67 @@
 	@return map-get($is-colors, $name);
 }
 
+
+@function is-color-func($color, $function, $value) {
+	
+	@if $function == none {
+		@return $color;
+	}
+	@else if $function == opacity {
+		$function: transparent;
+	}
+	
+	@if $function == hue {
+		$color: adjust-hue($color, 360deg * $value / 100);
+	}
+	@else if $function == light {
+		@if $value < 0 {
+			$color: darken($color, -1% * $value);
+		}
+		@else {
+			$color: lighten($color, 1% * $value);
+		}
+	}
+	@else if $function == saturate {
+		@if $value < 0 {
+			$color: desaturate($color, -1% * $value);
+		}
+		@else {
+			$color: saturate($color, 1% * $value);
+		}
+	}
+	@else if $function == scale {
+		@if $value < 0 {
+			$value: -1% * $value;
+			$color: desaturate(darken($color, $value), $value / 2);
+		}
+		@else {
+			$value: 1% * $value;
+			$color: saturate(lighten($color, $value), $value / 2);
+		}
+	}
+	@else if $function == transparent {
+		$value: $value / 100;
+		$color: fade-out($color, $value);
+	}
+	
+	@return $color;
+	
+}
+
+
+@function is-color-get($name, $function: none, $value: 50) {
+
+	$color: is-color($name);
+	
+	@if $color != null {
+		$color: is-color-func($color, $function, $value);
+	}
+	
+	@return $color;
+	
+}
+
 /*
 *  Set color style from color map by name and type
 *  Types: color (or none by default), bg, border
@@ -30,12 +91,7 @@
 	
 	@if $color != null {
 		
-		@if $function != none {
-			//$value: $value + "%";
-			//$color: $function($col, $val);
-			//$color: call($function, $color, $value);
-			$color: lighten($color, $value);
-		}
+		$color: is-color-func($color, $function, $value);
 		
 		@if $type == border {
 			border-color: $color;
@@ -43,8 +99,11 @@
 		@else if $type == bg {
 			background-color: $color;
 		}
-		@else {
+		@else if $type == none {
 			color: $color;
+		}
+		@else {
+			#{$type}: $color;
 		}
 		
 	}
