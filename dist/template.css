@@ -48,55 +48,30 @@ html,body{min-width:320px;font-family:Ubuntu, sans-serif;font-weight:400;font-si
 .bg-none{background-color:transparent}
 
 .color-theme{color:#6DB13F}
-.color-theme-hover:hover{color:#6DB13F}
 .color-second{color:#EF8720}
-.color-second-hover:hover{color:#EF8720}
 .color-third{color:#F3E759}
-.color-third-hover:hover{color:#F3E759}
 .color-green{color:#6DB13F}
-.color-green-hover:hover{color:#6DB13F}
 .color-yellow{color:#F9C82D}
-.color-yellow-hover:hover{color:#F9C82D}
 .color-blue{color:#5BA3D4}
-.color-blue-hover:hover{color:#5BA3D4}
 .color-teal{color:#128c7e}
-.color-teal-hover:hover{color:#128c7e}
 .color-red{color:#E54142}
-.color-red-hover:hover{color:#E54142}
 .color-orange{color:#EF8720}
-.color-orange-hover:hover{color:#EF8720}
 .color-pink{color:#D64381}
-.color-pink-hover:hover{color:#D64381}
 .color-purple{color:#444A9E}
-.color-purple-hover:hover{color:#444A9E}
 .color-beige{color:#F0E1CE}
-.color-beige-hover:hover{color:#F0E1CE}
 .color-gray-1{color:#F8F8F8}
-.color-gray-1-hover:hover{color:#F8F8F8}
 .color-gray-2{color:#E8E8E8}
-.color-gray-2-hover:hover{color:#E8E8E8}
 .color-gray-3{color:#D0D0D0}
-.color-gray-3-hover:hover{color:#D0D0D0}
 .color-gray-4{color:#B9B9B9}
-.color-gray-4-hover:hover{color:#B9B9B9}
 .color-gray-5{color:#A2A2A2}
-.color-gray-5-hover:hover{color:#A2A2A2}
 .color-gray-6{color:#808080}
-.color-gray-6-hover:hover{color:#808080}
 .color-gray-7{color:#5C5C5C}
-.color-gray-7-hover:hover{color:#5C5C5C}
 .color-gray-8{color:#454545}
-.color-gray-8-hover:hover{color:#454545}
 .color-gray-9{color:#2E2E2E}
-.color-gray-9-hover:hover{color:#2E2E2E}
 .color-white{color:#FFFFFF}
-.color-white-hover:hover{color:#FFFFFF}
 .color-black{color:#161616}
-.color-black-hover:hover{color:#161616}
 .color-deep{color:#000000}
-.color-deep-hover:hover{color:#000000}
 .color-none{color:transparent}
-.color-none-hover:hover{color:transparent}
 
 .border-theme{border-color:#6DB13F}
 .border-second{border-color:#EF8720}
@@ -123,6 +98,8 @@ html,body{min-width:320px;font-family:Ubuntu, sans-serif;font-weight:400;font-si
 .border-black{border-color:#161616}
 .border-deep{border-color:#000000}
 .border-none{border-color:transparent}
+
+&-hover:hover{color:transparent}
 
 .animation{transition:all 0.25s ease}
 

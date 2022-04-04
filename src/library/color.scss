@@ -12,6 +12,15 @@
 
 @each $type in bg, color, border {
 	@each $key, $value in $is-colors {
+		
+		.#{$type}-#{$key} {
+			@include is-color-set($key, $type);
+		}
+		.#{$type}-#{$key}-hover:hover {
+			@include is-color-set($key, $type);
+		}
+		
+		/*
 		@if $type == color {
 			.color-#{$key} {
 				@include is-color-set($key);
@@ -26,5 +35,7 @@
 				@include is-color-set($key, $type);
 			}
 		}
+		*/
+		
 	}
 }
