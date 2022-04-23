@@ -45,7 +45,7 @@ $is-containers-name: container + ", .container-fluid, .container-fill";
 		padding-right: $indent;
 		padding-left: $indent;
 		
-		.container-fill & {
+		.container-fill > & {
 			padding-right: 0;
 			padding-left: 0;
 		}
