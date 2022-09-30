@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@import "settings/components";
+@import "settings/sizes";
+@import "settings/layout";
+@import "settings/colors";
+@import "settings/fonts";
+@import "settings/shadows";
+
+/*
+
+$is-components: null !default;
+@if type-of($is-components) != map {
+    @import "settings/components";
+}
+
+$is-sizes: null !default;
+@if type-of($is-sizes) != map {
+    @import "settings/sizes";
+}
+
+$is-layout: null !default;
+@if type-of($is-layout) != map {
+    @import "settings/layout";
+}
+
+$is-colors: null !default;
+@if type-of($is-colors) != map {
+    @import "settings/colors";
+}
+
+$is-fonts: null !default;
+@if type-of($is-fonts) != map {
+    @import "settings/fonts";
+}
+
+$is-shadows: null !default;
+@if type-of($is-shadows) != map {
+    @import "settings/shadows";
+}
+
+*/

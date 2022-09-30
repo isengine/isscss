@@ -1,0 +1,21 @@
+$key: if($short, ts, null), if($full, text-strike, null);
+#{$key} {
+    %#{&} {
+        text-decoration: line-through;
+    }
+    @if ($class) {
+        .#{&} {
+            text-decoration: line-through;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-decoration: line-through;
+                    }
+                }
+            }
+        }
+    }
+}

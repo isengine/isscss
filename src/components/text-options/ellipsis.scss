@@ -1,0 +1,21 @@
+$key: if($short, te, null), if($full, text-ellipsis, null);
+#{$key} {
+    %#{&} {
+        text-overflow: ellipsis;
+    }
+    @if ($class) {
+        .#{&} {
+            text-overflow: ellipsis;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+}

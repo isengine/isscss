@@ -1,0 +1,27 @@
+$key: if($short, ay, null), if($full, align-y, null);
+#{$key} {
+    %#{&} {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+    @if ($class) {
+        .#{&} {
+            top: 50%;
+            bottom: auto;
+            transform: translateY(-50%);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        top: 50%;
+                        bottom: auto;
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+        }
+    }
+}

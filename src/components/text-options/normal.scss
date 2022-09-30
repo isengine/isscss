@@ -1,0 +1,36 @@
+$key: if($short, tn, null), if($full, text-normal, null);
+#{$key} {
+    %#{&} {
+        font-style: normal;
+        font-variant: normal;
+        text-overflow: unset;
+        word-wrap: normal;
+        text-decoration: none;
+        text-transform: none;
+    }
+    @if ($class) {
+        .#{&} {
+            font-style: normal;
+            font-variant: normal;
+            text-overflow: unset;
+            word-wrap: normal;
+            text-decoration: none;
+            text-transform: none;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        font-style: normal;
+                        font-variant: normal;
+                        text-overflow: unset;
+                        word-wrap: normal;
+                        text-decoration: none;
+                        text-transform: none;
+                    }
+                }
+            }
+        }
+    }
+}

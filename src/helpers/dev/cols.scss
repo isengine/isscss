@@ -1,0 +1,50 @@
+/**
+*  Данная функция возвращает массив нумерации колонок,
+*  созданный из одного значения числа колонок в настройках
+*  
+*  Пример:
+*  .col {
+*    @each $col in cols() {
+*      &-#{$col} {
+*        width: 100% * $col / cols-count();
+*      }
+*    }
+*  }
+*  
+*  Результат:
+*  .col-1 { width: 8.33% }
+*  .col-2 { width: 16.67% }
+*  .col-3 { width: 25% }
+*  .col-4 { width: 33.33% }
+*  .col-5 { width: 41.67% }
+*  .col-6 { width: 50% }
+*  .col-7 { width: 58.33% }
+*  .col-8 { width: 66.67% }
+*  .col-9 { width: 75% }
+*  .col-10 { width: 83.33% }
+*  .col-11 { width: 91.67% }
+*  .col-12 { width: 100% }
+*/
+
+@function cols() {
+    $cols: [];
+    $n: map-get($is-layout, cols);
+    @for $i from 1 through $n {
+        $cols: join($cols, $i);
+    }
+	@return $cols;
+}
+
+/**
+*  Данная функция возвращает значения числа колонок в настройках
+*  
+*  Пример:
+*  width: cols-count();
+*  
+*  Результат:
+*  width: 12;
+*/
+
+@function cols-count() {
+    @return map-get($is-layout, cols);
+}

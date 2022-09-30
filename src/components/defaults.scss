@@ -1,0 +1,264 @@
+body {
+    min-height: 100vh;
+    min-width: map-get($is-layout, min-width);
+    overflow: hidden auto!important;
+
+    margin: 0;
+    padding: 0;
+
+    $font: nth(map-values($is-fonts), 0);
+    font-family: map-get($font, name);
+    font-size: map-get($font, size);
+    font-weight: map-get($font, weight);
+    line-height: map-get($font, line-height);
+    text-indent: map-get($font, line-indent);
+    text-rendering: optimizeSpeed;
+
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &.light {
+        color: map-get($is-colors, dark);
+        background-color: map-get($is-colors, light);
+    }
+    &.dark {
+        color: map-get($is-colors, light);
+        background-color: map-get($is-colors, dark);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+
+ul[class],
+ol[class] {
+    padding: 0;
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+figure,
+figcaption,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+a {
+    &:link,
+    &:visited,
+    &:hover {
+        text-decoration: inherit;
+    }
+    &:not([class]) {
+        text-decoration-skip-ink: auto;
+    }
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: monospace;
+    font-size: 1em;
+}
+
+small {
+    font-size: 0.8em;
+}
+
+sub,
+sup {
+    font-size: 0.75em;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+    border-style: none;
+}
+
+article > * + * {
+    margin-top: 1em;
+}
+
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+}
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+    display: block;
+}
+
+label {
+    cursor: pointer;
+}
+
+legend {
+    display: block;
+    color: inherit;
+    padding: 0;
+}
+
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    text-transform: none;
+    color: inherit;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border-width: 1px;
+    border-style: solid;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    display: inline-block;
+    box-shadow: none;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-appearance: button;
+
+    &::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+    &:-moz-focusring {
+        outline: 1px dotted ButtonText;
+    }
+}
+
+input,
+button {
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+[type="number"] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        height: auto;
+    }
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+
+    &::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+}
+
+[hidden] {
+    display: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+}
+
+caption {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: #6c757d;
+    text-align: left;
+}
+
+th {
+    text-align: inherit;
+    text-align: -webkit-match-parent;
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+}

@@ -1,0 +1,45 @@
+$settings: map-get($is-components, z-index);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+$short: $settings == true or index($settings, short) != null;
+$full: $settings == true or index($settings, full) != null;
+
+$is-z-index: (
+    auto: auto,
+    0: 0,
+    1: 1,
+    2: 10,
+    3: 100,
+    4: 1000,
+    5: 10000,
+    last: -1,
+    first: 99999,
+);
+
+$key: if($short, z, null), if($full, z-index, null);
+#{$key} {
+    @each $k, $v in $is-z-index {
+        %#{&}-#{$k} {
+            z-index: $v;
+        }
+    }
+    @if ($class) {
+        @each $k, $v in $is-z-index {
+            .&-#{$k} {
+                z-index: $v;
+            }
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    @each $k, $v in $is-z-index {
+                        .#{$name}-#{&}-#{$k} {
+                            z-index: $v;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

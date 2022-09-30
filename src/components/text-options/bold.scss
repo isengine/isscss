@@ -1,0 +1,21 @@
+$key: if($short, tb, null), if($full, text-bold, null);
+#{$key} {
+    %#{&} {
+        font-weight: bold;
+    }
+    @if ($class) {
+        .#{&} {
+            font-weight: bold;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

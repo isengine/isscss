@@ -1,0 +1,22 @@
+$key: if($short, image-r, null), if($full, image-right, null);
+#{$key} {
+    %#{&} {
+        float: right;
+    }
+    @if ($class) {
+        .#{&} {
+            float: right;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+
+}

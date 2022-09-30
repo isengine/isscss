@@ -1,0 +1,21 @@
+$key: if($full, text-decoration-none, null);
+#{$key} {
+    %#{&} {
+        text-decoration: none;
+    }
+    @if ($class) {
+        .#{&} {
+            text-decoration: none;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}

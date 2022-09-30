@@ -1,0 +1,24 @@
+$key: if($short, fs, null), if($full, font-size, null);
+#{$key} {
+    %#{&} {
+        @include sizes-absolute(font-size);
+        @include sizes-special(font-size);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-absolute(font-size);
+            @include sizes-special(font-size);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-absolute(font-size);
+                        @include sizes-special(font-size);
+                    }
+                }
+            }
+        }
+    }
+}

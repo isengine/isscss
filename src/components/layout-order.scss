@@ -1,0 +1,51 @@
+$settings: map-get($is-components, layout-order);
+$media:settings == true or index($settings, breakpoints) != null;
+$class:settings == true or index($settings, class) != null;
+
+order {
+    $count: map-get($is-layout, cols);
+
+    @for $i from 0 through $count {
+        %#{&}-#{$i} {
+            order: $i;
+        }
+    }
+    %#{&}-first {
+        order: -1;
+    }
+    %#{&}-last {
+        order: 9999;
+    }
+
+    @if ($class) {
+        @for $i from 0 through $count {
+            .#{&}-#{$i} {
+                order: $i;
+            }
+            .#{&}-first {
+                order: -1;
+            }
+            .#{&}-last {
+                order: 9999;
+            }
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    @for $i from 0 through $count {
+                        .#{$name}-#{&}-#{$i} {
+                            order: $i;
+                        }
+                    }
+                    .#{$name}-#{&}-first {
+                        order: -1;
+                    }
+                    .#{$name}-#{&}-last {
+                        order: 9999;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+$key: if($short, image-c, null), if($full, image-center, null);
+#{$key} {
+    %#{&} {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    @if ($class) {
+        .#{&} {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,30 @@
+$key: if($short, min-w, null), if($full, min-width, null);
+#{$key} {
+    %#{&} {
+        @include sizes-base(min-width);
+        @include sizes-absolute(min-width);
+        @include sizes-relative(min-width);
+        @include sizes-special(min-width);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(min-width);
+            @include sizes-absolute(min-width);
+            @include sizes-relative(min-width);
+            @include sizes-special(min-width);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(min-width);
+                        @include sizes-absolute(min-width);
+                        @include sizes-relative(min-width);
+                        @include sizes-special(min-width);
+                    }
+                }
+            }
+        }
+    }
+}

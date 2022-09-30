@@ -1,0 +1,27 @@
+$key: if($short, p, null), if($full, padding, null);
+#{$key} {
+    %#{&} {
+        @include sizes-base(padding);
+        @include sizes-absolute(padding);
+        @include sizes-special(padding);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(padding);
+            @include sizes-absolute(padding);
+            @include sizes-special(padding);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(padding);
+                        @include sizes-absolute(padding);
+                        @include sizes-special(padding);
+                    }
+                }
+            }
+        }
+    }
+}

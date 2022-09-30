@@ -1,0 +1,25 @@
+$key: if($short, mask-r, null), if($full, mask-right, null);
+#{$key} {
+    %#{&} {
+        mask-position-x: right;
+        -webkit-mask-position-x: right;
+    }
+    @if ($class) {
+        .#{&} {
+            mask-position-x: right;
+            -webkit-mask-position-x: right;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        mask-position-x: right;
+                        -webkit-mask-position-x: right;
+                    }
+                }
+            }
+        }
+    }
+
+}

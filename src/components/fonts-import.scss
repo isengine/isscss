@@ -1,0 +1,6 @@
+@each $key, $value in $is-fonts {
+    $url: map-get($value, url);
+    @if ($url) {
+        @import url("#{$url}");
+    }
+}

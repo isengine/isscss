@@ -1,0 +1,54 @@
+@each $type, $style in (
+    color: color,
+    bg: background-color,
+    border: border-color,
+) {
+    $settings: map-get($is-components, colors);
+    $media: $settings == true or index($settings, breakpoints) != null;
+    $hover: $settings == true or index($settings, hover) != null;
+    $class: $settings == true or index($settings, class) != null;
+    @each $k, $v in $is-colors {
+        %#{$type}-#{$k} {
+            #{$style}: $v;
+        }
+        @if ($class == true) {
+            .#{$type}-#{$k} {
+                #{$style}: $v;
+            }
+        }
+    }
+    @if ($class == true) {
+        @if ($hover == true) {
+            @each $k, $v in $is-colors {
+                .#{$type}-#{$k}-hover {
+                    &:hover,
+                    &:focus {
+                        #{$style}: $v;
+                    }
+                }
+            }
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    @each $k, $v in $is-colors {
+                        .#{$name}-#{$type}-#{$k} {
+                            #{$style}: $v;
+                        }
+                    }
+                    @if ($hover == true) {
+                        @each $k, $v in $is-colors {
+                            .#{$name}-#{$type}-#{$k}-hover {
+                                &:hover,
+                                &:focus {
+                                    #{$style}: $v;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

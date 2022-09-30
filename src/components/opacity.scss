@@ -1,0 +1,48 @@
+$settings: map-get($is-components, opacity);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+$short: $settings == true or index($settings, short) != null;
+$full: $settings == true or index($settings, full) != null;
+
+$key: if($short, o, null), if($full, opacity, null);
+#{$key} {
+    $sizes: map-get($is-sizes, relative);
+
+    %#{&}-0 {
+        opacity: 0;
+    }
+    @each $size in $sizes {
+        $value: $size / 100;
+        %#{&}-#{$size} {
+            opacity: $value;
+        }
+    }
+
+    @if ($class) {
+        .#{&}-0 {
+            opacity: 0;
+        }
+        @each $size in $sizes {
+            $value: $size / 100;
+            .#{&}-#{$size} {
+                opacity: $value;
+            }
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&}-0 {
+                        opacity: 0;
+                    }
+                    @each $size in $sizes {
+                        $value: $size / 100;
+                        .#{$name}-#{&}-#{$size} {
+                            opacity: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

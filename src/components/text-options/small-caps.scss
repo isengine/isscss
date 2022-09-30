@@ -1,0 +1,21 @@
+$key: if($short, tsc, null), if($full, text-small-caps, null);
+#{$key} {
+    %#{&} {
+        font-variant: small-caps;
+    }
+    @if ($class) {
+        .#{&} {
+            font-variant: small-caps;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        font-variant: small-caps;
+                    }
+                }
+            }
+        }
+    }
+}

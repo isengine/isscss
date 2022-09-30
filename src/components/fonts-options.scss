@@ -1,0 +1,10 @@
+$settings: map-get($is-components, fonts-options);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+$short: $settings == true or index($settings, short) != null;
+$full: $settings == true or index($settings, full) != null;
+
+@import "fonts-options/font-size";
+@import "fonts-options/font-weight";
+@import "fonts-options/line-height";
+@import "fonts-options/line-indent";

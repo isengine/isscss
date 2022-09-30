@@ -1,0 +1,81 @@
+$key: if($short, col, null), if($full, column, null);
+#{$key} {
+    $cols: [];
+    $count: map-get($is-layout, cols);
+
+    @for $i from 1 through $count {
+        $cols: join($cols, $i);
+    }
+    
+    %#{&} {
+        & {
+            width: 0%;
+            flex: 1 0 0%;
+        }
+        &-auto {
+            width: auto;
+            flex-basis: auto;
+        }
+        &-0 {
+            display: none;
+        }
+        @each $col in $cols {
+            &-#{$col} {
+                $width: 100% * $col / $count;
+                width: $width;
+                flex-basis: $width;
+            }
+        }
+    }
+
+    @if ($class) {
+        .& {
+            & {
+                width: 0%;
+                flex: 1 0 0%;
+            }
+            &-auto {
+                width: auto;
+                flex-basis: auto;
+            }
+            &-0 {
+                display: none;
+            }
+            @each $col in $cols {
+                &-#{$col} {
+                    $width: 100% * $col / $count;
+                    width: $width;
+                    flex-basis: $width;
+                }
+            }
+        }
+
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint, $screen in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-& {
+                        & {
+                            width: 0%;
+                            flex: 1 0 0%;
+                        }
+                        &-auto {
+                            width: auto;
+                            flex-basis: auto;
+                        }
+                        &-0 {
+                            display: none;
+                        }
+                        @each $col in $cols {
+                            &-#{$col} {
+                                $width: 100% * $col / $count;
+                                width: $width;
+                                flex-basis: $width;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

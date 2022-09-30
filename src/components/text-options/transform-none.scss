@@ -1,0 +1,21 @@
+$key: if($full, text-transform-none, null);
+#{$key} {
+    %#{&} {
+        text-transform: none;
+    }
+    @if ($class) {
+        .#{&} {
+            text-transform: none;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-transform: none;
+                    }
+                }
+            }
+        }
+    }
+}

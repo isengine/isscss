@@ -1,0 +1,21 @@
+$key: if($short, tcc, null), if($full, text-capitalize, null);
+#{$key} {
+    %#{&} {
+        text-transform: capitalize;
+    }
+    @if ($class) {
+        .#{&} {
+            text-transform: capitalize;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+    }
+}

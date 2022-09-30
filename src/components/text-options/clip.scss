@@ -1,0 +1,21 @@
+$key: if($short, tc, null), if($full, text-clip, null);
+#{$key} {
+    %#{&} {
+        text-overflow: clip;
+    }
+    @if ($class) {
+        .#{&} {
+            text-overflow: clip;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-overflow: clip;
+                    }
+                }
+            }
+        }
+    }
+}

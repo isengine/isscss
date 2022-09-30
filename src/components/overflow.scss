@@ -1,0 +1,52 @@
+$settings: map-get($is-components, overflow);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+
+$is-overflow: (
+    overflow: (
+        overflow: auto,
+    ),
+    overflow-hidden: (
+        overflow: hidden,
+    ),
+    overflow-x: (
+        overflow-x: auto,
+        overflow-y: hidden,
+    ),
+    overflow-y: (
+        overflow-x: hidden,
+        overflow-y: auto,
+    ),
+);
+
+@each $key, $styles in $is-overflow {
+    %#{$key} {
+        @each $style, $value in $styles {
+            #{$style}: $value;
+        }
+    }
+    @if ($class == true) {
+        .#{$key} {
+            @each $style, $value in $styles {
+                #{$style}: $value;
+            }
+        }
+    }
+}
+
+@if ($class == true) {
+    @if ($media == true) {
+        $breakpoints: map-get($is-layout, breakpoints);
+        @each $name, $breakpoint in $breakpoints {
+            @media (min-width: #{$breakpoint}) {
+                @each $key, $styles in $is-overflow {
+                    .#{$name}-#{$key} {
+                        @each $style, $value in $styles {
+                            #{$style}: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

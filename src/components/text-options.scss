@@ -1,0 +1,21 @@
+$settings: map-get($is-components, text-options);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+$short: $settings == true or index($settings, short) != null;
+$full: $settings == true or index($settings, full) != null;
+
+@import "text-options/normal";
+@import "text-options/decoration-none";
+@import "text-options/transform-none";
+@import "text-options/bold";
+@import "text-options/italic";
+@import "text-options/underline";
+@import "text-options/overline";
+@import "text-options/strike";
+@import "text-options/clip";
+@import "text-options/ellipsis";
+@import "text-options/wrap";
+@import "text-options/small-caps";
+@import "text-options/capitalize";
+@import "text-options/lowercase";
+@import "text-options/uppercase";

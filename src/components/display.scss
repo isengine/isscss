@@ -1,0 +1,39 @@
+$settings: map-get($is-components, display);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+
+$is-display: (
+    none,
+    block,
+    inline,
+    inline-block,
+    flex,
+    grid,
+    contents,
+);
+
+@each $key in $is-display {
+    %#{$key} {
+        display: $key;
+    }
+    @if ($class == true) {
+        .#{$key} {
+            display: $key;
+        }
+    }
+}
+
+@if ($class == true) {
+    @if ($media == true) {
+        $breakpoints: map-get($is-layout, breakpoints);
+        @each $name, $breakpoint in $breakpoints {
+            @media (min-width: #{$breakpoint}) {
+                @each $key in $is-display {
+                    .#{$name}-#{$key} {
+                        display: $key;
+                    }
+                }
+            }
+        }
+    }
+}

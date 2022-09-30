@@ -1,0 +1,24 @@
+$key: if($short, lh, null), if($full, line-height, null);
+#{$key} {
+    %#{&} {
+        @include sizes-absolute(line-height);
+        @include sizes-special(line-height);
+    }
+    @if ($class) {
+        .& {
+            @include sizes-absolute(line-height);
+            @include sizes-special(line-height);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-absolute(line-height);
+                        @include sizes-special(line-height);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+$is-layout: (
+
+    breakpoints: (
+        (xs, 480px, 100%),
+        (sm, 640px, 100%),
+        (md, 720px, 720px),
+        (lg, 960px, 940px),
+        (xl, 1200px, 1140px),
+        (hd, 1900px, 1600px),
+        (x4, 3800px, 3200px)
+    ),
+
+    min-width: 320px,
+    cols: 12,
+    indent: null,
+    gap: 2rem
+
+);

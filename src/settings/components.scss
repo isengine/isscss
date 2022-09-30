@@ -1,0 +1,42 @@
+$is-components: (
+
+    fonts-import: true,
+    defaults: true,
+
+    layout: (breakpoints, class, short), //full
+
+    display: (breakpoints, class),
+    position: (breakpoints, class),
+    visibility: (breakpoints, class),
+    overflow: (class),
+    z-index: (breakpoints, class, short), //full
+    opacity: (breakpoints, class, short), //full
+
+    colors: (breakpoints, hover, class),
+    fonts: (class),
+    fonts-options: (breakpoints, class, short), //full
+    text-options: (class, short), //breakpoints full
+
+    flex: (breakpoints, class),
+    layout-align: (breakpoints, class),
+    layout-order: (breakpoints, class),
+    layout-gap: (breakpoints, class),
+
+    sizes: (breakpoints, class, short), //full
+    directions: (breakpoints, class, short), //full
+    spaces: (breakpoints, class, short), //full
+
+    borders: (class, short), //breakpoints, full
+    radiuses: (class, short), //breakpoints full
+
+    aligns: (breakpoints, class, short), //full
+
+    images: (class, full), //breakpoints hover short
+    backgrounds: (class, short, full), //breakpoints hover short
+    masks: (class, full), //breakpoints hover short
+
+    shadows: (class, short), //breakpoints full
+
+);
+
+//) !default;

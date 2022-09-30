@@ -1,0 +1,21 @@
+$key: if($short, tu, null), if($full, text-underline, null);
+#{$key} {
+    %#{&} {
+        text-decoration: underline;
+    }
+    @if ($class) {
+        .#{&} {
+            text-decoration: underline;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

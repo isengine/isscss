@@ -1,0 +1,24 @@
+@mixin sizes-relative($styles, $minus: null, $select: null) {
+    $relative: map-get($is-sizes, relative);
+    @if (length($relative) > 0) {
+        @each $value in ("%", "vw", "vh", "vmin", "vmax") {
+            $name: if($value == "%", p, $value);
+            @if ($select == null or $select == $name) {
+                @each $key in $relative {
+                    &-#{$key}#{$name} {
+                        @each $style in $styles {
+                            #{$style}: $key + $value;
+                        }
+                    }
+                    @if ($minus and $key != 0) {
+                        &--#{$key}#{$name} {
+                            @each $style in $styles {
+                                #{$style}: unquote("-#{$key}#{$value}");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

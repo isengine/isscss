@@ -1,0 +1,35 @@
+/**
+*  Данный миксин позволяет задать стили для указанной
+*  контрольной точки c наследованием класса.
+*  В качестве правил используется контент.
+*  
+*  @bp
+*  имя для контрольной точки
+*  
+*  Пример:
+*  .class_name {
+*    width: 10px;
+*    @include media(xs) {
+*      width: 10px
+*    };
+*  }
+*  
+*  Результат:
+*  .class_name { width: 10px }
+*  @media (min-width: 480px) {
+*    .class_name { width: 10px }
+*  }
+*/
+
+@mixin media($bp) {
+    $breakpoints: map-get($is-layout, breakpoints);
+    @each $name, $breakpoint in $breakpoints {
+        @if ($bp == null or $bp == $name) {
+            @media (min-width: #{$breakpoint}) {
+                & {
+                    @content;
+                }
+            }
+        }
+    }
+}

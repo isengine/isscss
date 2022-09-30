@@ -1,0 +1,20 @@
+@mixin sizes-absolute($styles, $minus: null) {
+    $absolute: map-get($is-sizes, absolute);
+    @if (length($absolute) > 0) {
+        @each $key in $absolute {
+            $name: unquote(str-slice("" + $key, 1, 1) + str-slice("" + $key, 3));
+            &-#{$name} {
+                @each $style in $styles {
+                    #{$style}: $key + "rem";
+                }
+            }
+            @if ($minus and $key != 0) {
+                &--#{$name} {
+                    @each $style in $styles {
+                        #{$style}: unquote("-#{$key}rem");
+                    }
+                }
+            }
+        }
+    }
+}

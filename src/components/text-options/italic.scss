@@ -1,0 +1,21 @@
+$key: if($short, ti, null), if($full, text-italic, null);
+#{$key} {
+    %#{&} {
+        font-style: italic;
+    }
+    @if ($class) {
+        .#{&} {
+            font-style: italic;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+    }
+}

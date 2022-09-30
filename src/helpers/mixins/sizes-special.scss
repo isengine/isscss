@@ -1,0 +1,19 @@
+@mixin sizes-special($styles, $minus: null) {
+    $special: map-get($is-sizes, special);
+    @if (length($special) > 0) {
+        @each $key, $value in $special {
+            &-#{$key} {
+                @each $style in $styles {
+                    #{$style}: $value;
+                }
+            }
+            @if ($minus and $value != 0) {
+                &--#{$key} {
+                    @each $style in $styles {
+                        #{$style}: unquote("-#{$value}");
+                    }
+                }
+            }
+        }
+    }
+}

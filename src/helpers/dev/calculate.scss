@@ -1,0 +1,39 @@
+@mixin calculate-cols($style) {
+    &-0 {
+        #{$style}: 0;
+        @include breakpoints-content {
+            #{$style}: 0;
+        };
+    }
+    @each $col in cols() {
+        &-#{$col} {
+            #{$style}: $col;
+            @include breakpoints-content {
+                #{$style}: $col;
+            };
+        }
+    }
+}
+
+@mixin calculate-widths($style) {
+    &-auto {
+        #{$style}: auto;
+        @include breakpoints-content {
+            #{$style}: auto;
+        };
+    }
+    &-0 {
+        display: none;
+        @include breakpoints-content {
+            display: none;
+        };
+    }
+    @each $col in cols() {
+        &-#{$col} {
+            #{$style}: 100% * $col / cols-count();
+            @include breakpoints-content {
+                #{$style}: 100% * $col / cols-count();
+            };
+        }
+    }
+}

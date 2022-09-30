@@ -1,0 +1,22 @@
+$settings: map-get($is-components, flex);
+$media:settings == true or index($settings, breakpoints) != null;
+$class:settings == true or index($settings, class) != null;
+$short:settings == true or index($settings, short) != null;
+$full:settings == true or index($settings, full) != null;
+
+@import "flex/row";
+@import "flex/row-reverse";
+@import "flex/column";
+@import "flex/column-reverse";
+@import "flex/wrap";
+@import "flex/nowrap";
+
+@import "flex/grow";
+@import "flex/shrink";
+
+@import "flex/auto";
+@import "flex/fill";
+@import "flex/max";
+@import "flex/min";
+@import "flex/fit";
+@import "flex/content";

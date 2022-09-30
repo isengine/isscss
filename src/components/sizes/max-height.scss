@@ -1,0 +1,30 @@
+$key: if($short, max-h, null), if($full, max-height, null);
+#{$key} {
+    %#{&} {
+        @include sizes-base(max-height);
+        @include sizes-absolute(max-height);
+        @include sizes-relative(max-height);
+        @include sizes-special(max-height);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(max-height);
+            @include sizes-absolute(max-height);
+            @include sizes-relative(max-height);
+            @include sizes-special(max-height);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(max-height);
+                        @include sizes-absolute(max-height);
+                        @include sizes-relative(max-height);
+                        @include sizes-special(max-height);
+                    }
+                }
+            }
+        }
+    }
+}

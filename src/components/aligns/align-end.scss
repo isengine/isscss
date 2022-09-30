@@ -1,0 +1,21 @@
+$key: if($short, ae, null), if($full, align-end, null);
+#{$key} {
+    %#{&} {
+        text-align: end;
+    }
+    @if ($class) {
+        .#{&} {
+            text-align: end;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        text-align: end;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+mask-image {
+    %#{&} {
+        mask-image: attr(data-mask-image url);
+        mask-repeat: no-repeat;
+        -webkit-mask-image: attr(data-mask-image url);
+        -webkit-mask-repeat: no-repeat;
+    }
+    @if ($class) {
+        .#{&} {
+            mask-image: attr(data-mask-image url);
+            mask-repeat: no-repeat;
+            -webkit-mask-image: attr(data-mask-image url);
+            -webkit-mask-repeat: no-repeat;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        mask-image: attr(data-mask-image url);
+                        mask-repeat: no-repeat;
+                        -webkit-mask-image: attr(data-mask-image url);
+                        -webkit-mask-repeat: no-repeat;
+                    }
+                }
+            }
+        }
+    }
+
+}

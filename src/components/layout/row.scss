@@ -1,0 +1,58 @@
+row {
+    %#{&} {
+        $indent: map-get($is-layout, indent);
+        $gap: map-get($is-layout, gap);
+
+        display: flex;
+        flex-wrap: wrap;
+
+        @if ($indent) {
+            margin-right: -$indent;
+            margin-left: -$indent;
+        }
+
+        @if ($gap) {
+            gap: $gap;
+        }
+
+        & > * {
+            width: auto;
+            max-width: 100%;
+            flex: 0 0 auto;
+
+            @if ($indent) {
+                padding-right: $indent;
+                padding-left: $indent;
+            }
+        }
+    }
+    @if ($class) {
+        .#{&} {
+            $indent: map-get($is-layout, indent);
+            $gap: map-get($is-layout, gap);
+
+            display: flex;
+            flex-wrap: wrap;
+
+            @if ($indent) {
+                margin-right: -$indent;
+                margin-left: -$indent;
+            }
+
+            @if ($gap) {
+                gap: $gap;
+            }
+
+            & > * {
+                width: auto;
+                max-width: 100%;
+                flex: 0 0 auto;
+
+                @if ($indent) {
+                    padding-right: $indent;
+                    padding-left: $indent;
+                }
+            }
+        }
+    }
+}

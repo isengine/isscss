@@ -1,0 +1,21 @@
+image-contain {
+    %#{&} {
+        object-fit: contain;
+    }
+    @if ($class) {
+        .#{&} {
+            object-fit: contain;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        object-fit: contain;
+                    }
+                }
+            }
+        }
+    }
+
+}

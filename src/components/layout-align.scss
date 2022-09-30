@@ -1,0 +1,31 @@
+$settings: map-get($is-components, layout-align);
+$media:settings == true or index($settings, breakpoints) != null;
+$class:settings == true or index($settings, class) != null;
+
+@import "layout-align/justify-content-start";
+@import "layout-align/justify-content-end";
+@import "layout-align/justify-content-center";
+@import "layout-align/justify-content-between";
+@import "layout-align/justify-content-around";
+@import "layout-align/justify-content-evenly";
+
+@import "layout-align/align-items-start";
+@import "layout-align/align-items-end";
+@import "layout-align/align-items-center";
+@import "layout-align/align-items-stretch";
+@import "layout-align/align-items-baseline";
+
+@import "layout-align/align-content-start";
+@import "layout-align/align-content-end";
+@import "layout-align/align-content-center";
+@import "layout-align/align-content-stretch";
+@import "layout-align/align-content-baseline";
+@import "layout-align/align-content-between";
+@import "layout-align/align-content-around";
+@import "layout-align/align-content-evenly";
+
+@import "layout-align/align-self-start";
+@import "layout-align/align-self-end";
+@import "layout-align/align-self-center";
+@import "layout-align/align-self-stretch";
+@import "layout-align/align-self-baseline";

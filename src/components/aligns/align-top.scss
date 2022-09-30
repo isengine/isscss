@@ -1,0 +1,21 @@
+$key: if($short, at, null), if($full, align-top, null);
+#{$key} {
+    %#{&} {
+        vertical-align: top;
+    }
+    @if ($class) {
+        .#{&} {
+            vertical-align: top;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+    }
+}

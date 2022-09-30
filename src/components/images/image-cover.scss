@@ -1,0 +1,21 @@
+image-cover {
+    %#{&} {
+        object-fit: cover;
+    }
+    @if ($class) {
+        .#{&} {
+            object-fit: cover;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+}

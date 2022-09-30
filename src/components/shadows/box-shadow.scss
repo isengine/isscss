@@ -1,0 +1,117 @@
+$key: if($short, sh-box, null), if($full, shadow-box, null);
+#{$key} {
+
+    $directions: (
+        default: null,
+        top-left: tl,
+        top-right: tr,
+        bottom-left: bl,
+        bottom-right: br,
+        top: t,
+        bottom: b,
+        left: l,
+        right: r,
+    );
+    $colors: map-get($is-shadows, colors);
+    $sizes: map-get($is-shadows, sizes);
+    $opacity: map-get($is-shadows, opacity);
+
+    @each $color-key, $color in $colors {
+        $color-key: if($color-key == default, "", "-#{$color-key}");
+        @each $size-key, $size in $sizes {
+            $size-key: if($size-key == default, "", "-#{$size-key}");
+            @each $opacy in $opacity {
+                $opacy-key: if($opacy == 100, "", "-#{$opacy}");
+                %#{&}#{$color-key}#{$size-key}#{$opacy-key} {
+                    @each $d-full, $d-short in $directions {
+                        $direction: if($short, $d-short, null), if($full, $d-full, null);
+                        @each $d-key in $direction {
+                            @if (
+                                ($d-key and $short and $full)
+                                or (not $d-key and not $full)
+                            ) {
+                                $d-key: if($d-key == default or not $d-key, "", "-#{$d-key}");
+                                &#{$d-key} {
+                                    $x: if(str-index($d-full, left), "-#{$size}", "#{$size}");
+                                    $y: if(str-index($d-full, top), "-#{$size}", "#{$size}");
+                                    $blur: $size;
+                                    $color: rgba($color, $opacy / 100);
+                                    box-shadow: unquote($x) unquote($y) $blur $color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($class) {
+        @each $color-key, $color in $colors {
+            $color-key: if($color-key == default, "", "-#{$color-key}");
+            @each $size-key, $size in $sizes {
+                $size-key: if($size-key == default, "", "-#{$size-key}");
+                @each $opacy in $opacity {
+                    $opacy-key: if($opacy == 100, "", "-#{$opacy}");
+                    .&#{$color-key}#{$size-key}#{$opacy-key} {
+                        @each $d-full, $d-short in $directions {
+                            $direction: if($short, $d-short, null), if($full, $d-full, null);
+                            @each $d-key in $direction {
+                                @if (
+                                    ($d-key and $short and $full)
+                                    or (not $d-key and not $full)
+                                ) {
+                                    $d-key: if($d-key == default or not $d-key, "", "-#{$d-key}");
+                                    &#{$d-key} {
+                                        $x: if(str-index($d-full, left), "-#{$size}", "#{$size}");
+                                        $y: if(str-index($d-full, top), "-#{$size}", "#{$size}");
+                                        $blur: $size;
+                                        $color: rgba($color, $opacy / 100);
+                                        box-shadow: unquote($x) unquote($y) $blur $color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    @each $color-key, $color in $colors {
+                        $color-key: if($color-key == default, "", "-#{$color-key}");
+                        @each $size-key, $size in $sizes {
+                            $size-key: if($size-key == default, "", "-#{$size-key}");
+                            @each $opacy in $opacity {
+                                $opacy-key: if($opacy == 100, "", "-#{$opacy}");
+                                .#{$name}-#{&}#{$color-key}#{$size-key}#{$opacy-key} {
+                                    @each $d-full, $d-short in $directions {
+                                        $direction: if($short, $d-short, null), if($full, $d-full, null);
+                                        @each $d-key in $direction {
+                                            @if (
+                                                ($d-key and $short and $full)
+                                                or (not $d-key and not $full)
+                                            ) {
+                                                $d-key: if($d-key == default or not $d-key, "", "-#{$d-key}");
+                                                &#{$d-key} {
+                                                    $x: if(str-index($d-full, left), "-#{$size}", "#{$size}");
+                                                    $y: if(str-index($d-full, top), "-#{$size}", "#{$size}");
+                                                    $blur: $size;
+                                                    $color: rgba($color, $opacy / 100);
+                                                    box-shadow: unquote($x) unquote($y) $blur $color;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

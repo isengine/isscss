@@ -1,0 +1,30 @@
+$key: if($short, r, null), if($full, radius, null);
+#{$key} {
+    %#{&} {
+        @include sizes-base(border-radius);
+        @include sizes-absolute(border-radius);
+        @include sizes-relative(border-radius, null, p);
+        @include sizes-special(border-radius);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(border-radius);
+            @include sizes-absolute(border-radius);
+            @include sizes-relative(border-radius, null, p);
+            @include sizes-special(border-radius);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(border-radius);
+                        @include sizes-absolute(border-radius);
+                        @include sizes-relative(border-radius, null, p);
+                        @include sizes-special(border-radius);
+                    }
+                }
+            }
+        }
+    }
+}

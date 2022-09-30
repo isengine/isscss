@@ -1,0 +1,27 @@
+flex-shrink {
+    $count: map-get($is-layout, cols);
+    @for $i from 0 through $count {
+        %#{&} {
+            flex-shrink: $i;
+        }
+    }
+    @if ($class) {
+        @for $i from 0 through $count {
+            .#{&} {
+                flex-shrink: $i;
+            }
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    @for $i from 0 through $count {
+                        .#{$name}-#{&} {
+                            flex-shrink: $i;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

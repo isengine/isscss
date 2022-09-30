@@ -1,0 +1,30 @@
+$key: if($short, fw, null), if($full, font-weight, null);
+#{$key} {
+    @for $i from 1 through 9 {
+        $value: unquote($i + "00");
+        %#{&}-#{$value} {
+            font-weight: $value;
+        }
+    }
+    @if ($class) {
+        @for $i from 1 through 9 {
+            $value: unquote($i + "00");
+            .&-#{$value} {
+                font-weight: $value;
+            }
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    @for $i from 1 through 9 {
+                        $value: unquote($i + "00");
+                        .#{$name}-#{&}-#{$value} {
+                            font-weight: $value;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+$settings: map-get($is-components, directions);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+$short: $settings == true or index($settings, short) != null;
+$full: $settings == true or index($settings, full) != null;
+
+@import "directions/left";
+@import "directions/right";
+@import "directions/top";
+@import "directions/bottom";

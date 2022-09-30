@@ -1,0 +1,30 @@
+$key: if($short, rb, null), if($full, radius-bottom, null);
+#{$key} {
+    %#{&} {
+        @include sizes-base(border-bottom-left-radius border-bottom-right-radius);
+        @include sizes-absolute(border-bottom-left-radius border-bottom-right-radius);
+        @include sizes-relative(border-bottom-left-radius border-bottom-right-radius, null, p);
+        @include sizes-special(border-bottom-left-radius border-bottom-right-radius);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(border-bottom-left-radius border-bottom-right-radius);
+            @include sizes-absolute(border-bottom-left-radius border-bottom-right-radius);
+            @include sizes-relative(border-bottom-left-radius border-bottom-right-radius, null, p);
+            @include sizes-special(border-bottom-left-radius border-bottom-right-radius);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(border-bottom-left-radius border-bottom-right-radius);
+                        @include sizes-absolute(border-bottom-left-radius border-bottom-right-radius);
+                        @include sizes-relative(border-bottom-left-radius border-bottom-right-radius, null, p);
+                        @include sizes-special(border-bottom-left-radius border-bottom-right-radius);
+                    }
+                }
+            }
+        }
+    }
+}

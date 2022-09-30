@@ -1,0 +1,21 @@
+$settings: map-get($is-components, spaces);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+$short: $settings == true or index($settings, short) != null;
+$full: $settings == true or index($settings, full) != null;
+
+@import "spaces/margin";
+@import "spaces/margin-left";
+@import "spaces/margin-right";
+@import "spaces/margin-top";
+@import "spaces/margin-bottom";
+@import "spaces/margin-x";
+@import "spaces/margin-y";
+
+@import "spaces/padding";
+@import "spaces/padding-left";
+@import "spaces/padding-right";
+@import "spaces/padding-top";
+@import "spaces/padding-bottom";
+@import "spaces/padding-x";
+@import "spaces/padding-y";

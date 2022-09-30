@@ -1,0 +1,46 @@
+container {
+    $indent: map-get($is-layout, indent);
+    $breakpoints: map-get($is-layout, breakpoints);
+
+    $names: unquote("%#{&}, %#{&}-full");
+    @if ($class) {
+        $names: $names + unquote(".#{&}, .#{&}-full");
+    }
+    @if ($media == true) {
+        @each $name, $breakpoint, $screen in $breakpoints {
+            $names: $names + unquote(", %#{$name}-#{&}");
+            @if ($class) {
+                $names: $names + unquote(", .#{$name}-#{&}");
+            }
+        }
+    }
+
+    @at-root #{$names} {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+
+        @if ($indent) {
+            padding-right: $indent;
+            padding-left: $indent;
+        }
+    }
+
+    @if ($media == true) {
+        $names: unquote("%#{&}");
+        @if ($class) {
+            $names: unquote(".#{&}");
+        }
+        @each $name, $breakpoint, $screen in $breakpoints {
+            $names: $names + unquote(", %#{$name}-#{&}");
+            @if ($class) {
+                $names: $names + unquote(", .#{$name}-#{&}");
+            }
+            @media (min-width: $breakpoint) {
+                @at-root #{$names} {
+                    max-width: $screen;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+mask-cover {
+    %#{&} {
+        mask-size: cover;
+        mask-position: 50% 50%;
+        -webkit-mask-size: cover;
+        -webkitmask-position: 50% 50%;
+    }
+    @if ($class) {
+        .#{&} {
+            mask-size: cover;
+            mask-position: 50% 50%;
+            -webkit-mask-size: cover;
+            -webkitmask-position: 50% 50%;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        mask-size: cover;
+                        mask-position: 50% 50%;
+                        -webkit-mask-size: cover;
+                        -webkitmask-position: 50% 50%;
+                    }
+                }
+            }
+        }
+    }
+
+}

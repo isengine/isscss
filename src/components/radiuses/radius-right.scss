@@ -1,0 +1,30 @@
+$key: if($short, rr, null), if($full, radius-right, null);
+#{$key} {
+    %#{&} {
+        @include sizes-base(border-bottom-right-radius border-top-right-radius);
+        @include sizes-absolute(border-bottom-right-radius border-top-right-radius);
+        @include sizes-relative(border-bottom-right-radius border-top-right-radius, null, p);
+        @include sizes-special(border-bottom-right-radius border-top-right-radius);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(border-bottom-right-radius border-top-right-radius);
+            @include sizes-absolute(border-bottom-right-radius border-top-right-radius);
+            @include sizes-relative(border-bottom-right-radius border-top-right-radius, null, p);
+            @include sizes-special(border-bottom-right-radius border-top-right-radius);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(border-bottom-right-radius border-top-right-radius);
+                        @include sizes-absolute(border-bottom-right-radius border-top-right-radius);
+                        @include sizes-relative(border-bottom-right-radius border-top-right-radius, null, p);
+                        @include sizes-special(border-bottom-right-radius border-top-right-radius);
+                    }
+                }
+            }
+        }
+    }
+}

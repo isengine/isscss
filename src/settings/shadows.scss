@@ -1,0 +1,28 @@
+$is-shadows: (
+
+    colors: (
+        default: map-get($is-colors, black),
+        white: map-get($is-colors, white),
+    ),
+
+    opacity: (
+        10,
+        25,
+        50,
+        75,
+        90,
+        100,
+    ),
+
+    sizes: (
+        default: 0,
+        xs: 0.25rem,
+        sm: 0.5rem,
+        md: 1rem,
+        lg: 1.5rem,
+        xl: 3rem,
+        min: 1px,
+        full: 100%,
+    ),
+
+);

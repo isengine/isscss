@@ -1,0 +1,22 @@
+bg-fixed {
+
+    %#{&} {
+        background-attachment: fixed;
+    }
+    @if ($class) {
+        .#{&} {
+            background-attachment: fixed;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        background-attachment: fixed;
+                    }
+                }
+            }
+        }
+    }
+
+}

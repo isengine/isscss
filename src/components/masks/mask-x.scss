@@ -1,0 +1,24 @@
+mask-x {
+    %#{&} {
+        mask-position-x: center;
+        -webkit-mask-position-x: center;
+    }
+    @if ($class) {
+        .#{&} {
+            mask-position-x: center;
+            -webkit-mask-position-x: center;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        mask-position-x: center;
+                        -webkit-mask-position-x: center;
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,34 @@
+$settings: map-get($is-components, visibility);
+$media: $settings == true or index($settings, breakpoints) != null;
+$class: $settings == true or index($settings, class) != null;
+
+$is-visibility: (
+    visibile,
+    hidden,
+);
+
+@each $key in $is-visibility {
+    %#{$key} {
+        visibility: $key;
+    }
+    @if ($class == true) {
+        .#{$key} {
+            visibility: $key;
+        }
+    }
+}
+
+@if ($class == true) {
+    @if ($media == true) {
+        $breakpoints: map-get($is-layout, breakpoints);
+        @each $name, $breakpoint in $breakpoints {
+            @media (min-width: #{$breakpoint}) {
+                @each $key in $is-visibility {
+                    .#{$name}-#{$key} {
+                        visibility: $key;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+$settings: map-get($is-components, layout-gap);
+$media:settings == true or index($settings, breakpoints) != null;
+$class:settings == true or index($settings, class) != null;
+
+gap {
+    %#{&} {
+        @include sizes-base(gap);
+        @include sizes-absolute(gap);
+        @include sizes-relative(gap);
+        @include sizes-special(gap);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-base(gap);
+            @include sizes-absolute(gap);
+            @include sizes-relative(gap);
+            @include sizes-special(gap);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-base(gap);
+                        @include sizes-absolute(gap);
+                        @include sizes-relative(gap);
+                        @include sizes-special(gap);
+                    }
+                }
+            }
+        }
+    }
+}

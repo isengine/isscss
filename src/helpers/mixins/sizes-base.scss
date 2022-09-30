@@ -1,0 +1,12 @@
+@mixin sizes-base($styles) {
+    &-auto {
+        @each $style in $styles {
+            #{$style}: auto;
+        }
+    }
+    &-0 {
+        @each $style in $styles {
+            #{$style}: 0;
+        }
+    }
+}

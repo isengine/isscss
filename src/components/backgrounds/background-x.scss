@@ -1,0 +1,22 @@
+bg-x {
+
+    %#{&} {
+        background-position-x: center;
+    }
+    @if ($class) {
+        .#{&} {
+            background-position-x: center;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        background-position-x: center;
+                    }
+                }
+            }
+        }
+    }
+
+}

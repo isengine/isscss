@@ -1,0 +1,23 @@
+$key: if($short, bg-l, null), if($full, bg-left, null);
+#{$key} {
+
+    %#{&} {
+        background-position-x: left;
+    }
+    @if ($class) {
+        .#{&} {
+            background-position-x: left;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        background-position-x: left;
+                    }
+                }
+            }
+        }
+    }
+
+}

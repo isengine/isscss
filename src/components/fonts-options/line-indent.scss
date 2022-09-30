@@ -1,0 +1,24 @@
+$key: if($short, li, null), if($full, line-indent, null);
+#{$key} {
+    %#{&} {
+        @include sizes-absolute(text-indent, true);
+        @include sizes-special(text-indent, true);
+    }
+    @if ($class) {
+        .#{&} {
+            @include sizes-absolute(text-indent, true);
+            @include sizes-special(text-indent, true);
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        @include sizes-absolute(text-indent, true);
+                        @include sizes-special(text-indent, true);
+                    }
+                }
+            }
+        }
+    }
+}

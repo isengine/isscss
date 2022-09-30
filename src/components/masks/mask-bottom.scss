@@ -1,0 +1,25 @@
+$key: if($short, mask-b, null), if($full, mask-bottom, null);
+#{$key} {
+    %#{&} {
+        mask-position-y: bottom;
+        -webkit-mask-position-y: bottom;
+    }
+    @if ($class) {
+        .#{&} {
+            mask-position-y: bottom;
+            -webkit-mask-position-y: bottom;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        mask-position-y: bottom;
+                        -webkit-mask-position-y: bottom;
+                    }
+                }
+            }
+        }
+    }
+
+}

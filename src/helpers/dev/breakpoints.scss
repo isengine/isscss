@@ -1,0 +1,118 @@
+/**
+*  Данный миксин позволяет задать стили для одной указанной контрольной точки
+*  
+*  @breakpoint
+*  имя контрольной точки
+*  @styles
+*  массив стилей
+*  
+*  Пример:
+*  .class_name {
+*    @include breakpoint(xs, (width: 10vw, height: 10vh));
+*    @include breakpoint(sm, (width: 20vw, height: 20vh));
+*  }
+*  
+*  Результат:
+*  @media (min-width: 480px) {
+*    .class_name { width: 10vw; height: 10vh }
+*  }
+*  @media (min-width: 640px) {
+*    .class_name { width: 20vw; height: 20vh }
+*  }
+*/
+
+@mixin breakpoint($breakpoint, $styles) {
+    $breakpoints: map-get($is-layout, breakpoints);
+    @each $name, $breakpoint_value in $breakpoints {
+        @if $name == $breakpoint {
+            @media (min-width: #{$breakpoint_value}) {
+                & {
+                    @each $key, $value in $styles {
+                        #{$key}: $value;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+*  Данный миксин позволяет задать стили для указанных контрольных точек
+*  
+*  @class
+*  класс, которому будут назначаться стили
+*  @styles
+*  массив стилей для контрольных точек
+*  
+*  Пример:
+*  @include breakpoints(class_name, (
+*    xs: (width: 10vw, height: 10vh),
+*    sm: (width: 20vw, height: 20vh)
+*  ));
+*  
+*  Результат:
+*  @media (min-width: 480px) {
+*    .xs-class_name { width: 10vw; height: 10vh }
+*  }
+*  @media (min-width: 640px) {
+*    .sm-class_name { width: 20vw; height: 20vh }
+*  }
+*/
+
+@mixin breakpoints($class, $styles) {
+    $breakpoints: map-get($is-layout, breakpoints);
+    @each $name, $breakpoint, $screen in $breakpoints {
+        $style: map-get($styles, $name);
+        @media (min-width: #{$breakpoint}) {
+            .#{$name}-#{$class} {
+                @each $key, $value in $style {
+                    #{$key}: $value;
+                }
+            }
+        }
+    }
+}
+
+/**
+*  Данный миксин позволяет задать стили для всех контрольных точек
+*  c наследованием класса и присвоением ему префикса
+*  в соответствии с контрольной точкой.
+*  В качестве правил используется контент.
+*  
+*  Пример:
+*  .class_name {
+*    width: 10px;
+*    @include breakpoints-content {
+*      width: 10px
+*    ];
+*  }
+*  
+*  Результат:
+*  .class_name { width: 10px }
+*  @media (min-width: 480px) {
+*    .xs-class_name { width: 10px }
+*  }
+*  @media (min-width: 640px) {
+*    .sm-class_name { width: 10px }
+*  }
+*  @media (min-width: 720px) {
+*    .md-class_name { width: 10px }
+*  }
+*  @media (min-width: 960px) {
+*    .lg-class_name { width: 10px }
+*  }
+*  ...
+*/
+
+@mixin breakpoints-content() {
+    $breakpoints: map-get($is-layout, breakpoints);
+    $selector: str-slice(unquote("" + &), 2);
+    $first: str-slice(unquote("" + &), 1, 1);
+    @each $name, $breakpoint, $screen in $breakpoints {
+        @media (min-width: #{$breakpoint}) {
+            @at-root #{$first}#{$name}-#{$selector} {
+                @content;
+            }
+        }
+    }
+}

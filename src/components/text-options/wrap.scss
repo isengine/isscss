@@ -1,0 +1,21 @@
+$key: if($short, tw, null), if($full, text-wrap, null);
+#{$key} {
+    %#{&} {
+        word-wrap: break-word;
+    }
+    @if ($class) {
+        .#{&} {
+            word-wrap: break-word;
+        }
+        @if ($media == true) {
+            $breakpoints: map-get($is-layout, breakpoints);
+            @each $name, $breakpoint in $breakpoints {
+                @media (min-width: #{$breakpoint}) {
+                    .#{$name}-#{&} {
+                        word-wrap: break-word;
+                    }
+                }
+            }
+        }
+    }
+}

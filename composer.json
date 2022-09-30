@@ -2,7 +2,7 @@
     "name": "isengine/isscss",
     "type": "project",
     "description": "Библиотека стилей для isEngine framework на SASS/SCSS",
-    "version": "1.0.0-beta",
+    "version": "1.1.0-beta",
     "keywords": [ "php", "cms", "framework", "isengine", "sass", "scss" ],
     "license": "MIT",
     "homepage": "https://isengine.org",
