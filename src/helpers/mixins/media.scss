@@ -1,10 +1,12 @@
 /**
-*  Данный миксин позволяет задать стили для указанной
-*  контрольной точки c наследованием класса.
+*  Данный миксин позволяет задать стили для указанной контрольной точки
+*  и ориентации (если нужно), c наследованием класса.
 *  В качестве правил используется контент.
 *  
 *  @bp
 *  имя для контрольной точки
+*  @orient
+*  имя для ориентации, если нужно
 *  
 *  Пример:
 *  .class_name {
@@ -21,11 +23,12 @@
 *  }
 */
 
-@mixin media($bp) {
+@mixin media($bp, $orient: null) {
     $breakpoints: map-get($is-layout, breakpoints);
     @each $name, $breakpoint in $breakpoints {
         @if ($bp == null or $bp == $name) {
-            @media (min-width: #{$breakpoint}) {
+            $ori: if($orient, " and (orientation: #{$orient})", "");
+            @media (min-width: #{$breakpoint})#{$ori} {
                 & {
                     @content;
                 }
