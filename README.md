@@ -6,7 +6,7 @@
 
 Подключите библиотеку к своему проекту.
 
-    @import "/vendor/isengine/isscss/src/is";
+    @import "/path/to/isengine/isscss/src/is";
 
 Вы можете использовать библиотеку как **utility first**, назначая классы элемента, например:
 
