@@ -2,6 +2,34 @@
 
 Библиотека стилей для isEngine framework на SASS/SCSS.
 
+# Быстрый старт
+
+Подключите библиотеку к своему проекту.
+
+    @import "/vendor/isengine/isscss/src/is";
+
+Вы можете использовать библиотеку как **utility first**, назначая классы элемента, например:
+
+    // html код в стиле utility first
+    <div class="flex my-1 px-2 justify-content-between">
+        ...
+    </div>
+
+Или использовать ее для простроения своих классов через наследование от классов-шаблонов:
+
+    // style sheet
+    .flex-block {
+        @extend %flex;
+        @extend %my-1;
+        @extend %px-2;
+        @extend %justify-content-between;
+    }
+
+    // html код по методологии BEM
+    <div class="flex-block">
+        ...
+    </div>
+
 # Оглавление
 
 - [О проекте](#о-проекте)
